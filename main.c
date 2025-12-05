@@ -34,6 +34,8 @@ int main(){
             intToBin(intNum, intBin);
             fracToBin(fracNum, fracBin);
 
+            printf("conversão binária: %s.%s\n",intBin,fracBin);
+
             createFloatingBin(sign, intBin, fracBin, bin);
 
             break;

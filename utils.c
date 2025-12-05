@@ -1,4 +1,3 @@
-#pragma once
 #include "utils.h"
 #include <stdio.h>
 
@@ -66,10 +65,68 @@ int getStrLength(char* str){
 
 void createFloatingBin(int sign, char intBin[33], char fracBin[33], char bin[33]){
     bin[0] = sign;
+    int exponent;
 
-    int exponent = getStrLength(intBin) - 1;
+    //number < 1.0
+    if(getStrLength(intBin) == 0)
+    {
+        exponent = -1;
+        for(int i = 0; i < 33; i++)
+        {
+            if(fracBin[i] == '1'){
+                exponent -= i;
+            }
+        }
+    }
+    //number >= 1.0
+    else
+    {
+        exponent = getStrLength(intBin) - 1;
+    }
+    
+    char significand[65];
+    concatStrings32(intBin,fracBin,significand);
 
-    printf("expoente: %d",exponent);
+    printf("expoente: %d\n",exponent);
+    printf("significando: %s\n", significand);
+}
+
+void concatStrings32(char str1[33], char str2[33], char result[65]){
+    int resultIndex = 0;
+    int iterator = 0;
+    int str = 1;
+
+    while(resultIndex < 64){
+        if(str == 1)
+        {
+            if(str1[iterator] != '\0')
+            {
+                result[resultIndex] = str1[iterator];
+                resultIndex++;
+                iterator++;
+            }
+            else
+            {
+                str = 2;
+                iterator = 0;
+            }
+        }
+        else if(str == 2)
+        {
+            if(str2[iterator] != '\0')
+            {
+                result[resultIndex] = str2[iterator];
+                resultIndex++;
+                iterator++;
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+
+    result[resultIndex] = '\0';
 }
 
 void swap(char* a, char* b){
