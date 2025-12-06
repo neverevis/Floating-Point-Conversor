@@ -83,3 +83,7 @@ projeto e compile usando:
 ``` bash
 sh build.sh
 ```
+# Authors
+
+- **Milan de Oliveira Bahrami** - [@neverevis](https://github.com/neverevis)
+- **Matheus Costa Teixeira** - [@mathmct](https://github.com/mathmct)
