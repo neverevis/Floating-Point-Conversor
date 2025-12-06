@@ -7,3 +7,4 @@ void binReverse(char bin[33]);
 int  getStrLength(char* bin);
 void swap(char* a, char* b);
 void concatStrings32(char str1[33], char str2[33], char result[65]);
+void binaryToDecimal(char bin[33], float* decimal);
